@@ -30,9 +30,9 @@ To get you ready to interview and work as professional software engineers.
 ## Your Goal
 Learn as much as you can, with the expectations that you will be asked to use these technology at your interview and project.
 
-## Expectaions
+## Expectations
 - Attendance/timeliness: Please email Juniper if you have to miss a day or part of the day for appointments/emergencies, etc.
-- Transparant Communication: We can't help you if you don't tell us.
+- Transparent Communication: We can't help you if you don't tell us.
 - Safe Learning Environment: We are all here to learn. Effective learning does not take place without trust and vulnerability. This means no bullying, hate speech, discrimination, but also being kind to others and treating each other with respect.  
 - Cameras are Always appreciated! Camera fatigue is real. But humans depend a lot on non-verbal communication and this helps us to tell quickly how you're feeling/if you are understanding the material. Also it makes us feel more connected!
 
