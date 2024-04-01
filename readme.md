@@ -3,6 +3,7 @@ Welcome! This document aims to give you an overview of what's coming in the next
 
 ## General Info
 - Dates: 4/1/24 - 5/24/24 (8 weeks)
+- Work Hours: M-F 10AM-6PM, Lunch 1-2PM. All hours are in Eastern.
 - Trainers: Juniper Song, Jonathan De La Cruz
 - Curriculum: .NET Fullstack with AI assisteed coding
 
