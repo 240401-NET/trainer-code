@@ -52,6 +52,7 @@ It is also a folder that contains .git hidden folder.
 ### Working with Remote Repositories
 - Add a new remote repository to your local repo by executing `git remote add nickname repo-url`
 - Push your updates by `git push`
+  - set up your git upstream branch forever, by doing `git push --set-upstream origin branch-name`
 - Pull the updates from remote repo by `git pull`
 - Download/Copy the new remote repo to your local machine by running `git clone repo-url` (this is the way to go, if you already have remote repository set up)
 
