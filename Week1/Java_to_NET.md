@@ -34,7 +34,7 @@ From the standard Java to standard .NET curriculum perspective
 #### Dependency Management
 - Nuget is dependency manager for .NET. It comes preinstalled with all .NET SDK and by default looks for packages [here](https://www.nuget.org/)
 - `dotnet add package <package-name>`: adds package dependency to your .csproj file.
-	- *Common Error: All `dotnet add` commands have to be executed inside the project you're looking to add dependencies to. This is also common with people doing `dotnet run` outside the project*
+	- *Common Error: All `dotnet add` commands have to be executed inside the project you're looking to add dependencies to. This is common with people doing `dotnet run` outside the project*
 #### .NET SDK commands cheat-sheet
 - `dotnet --info`: information on .NET SDK
 - `dotnet new ...`: scaffold a new project
@@ -42,11 +42,7 @@ From the standard Java to standard .NET curriculum perspective
 	- `dotnet new gitignore`: create new .NET specific gitignore file
 	- `dotnet new list`: List all templates available in dotnet new command
 - `dotnet run`: clean, restore, build, run the project
-	- `dotnet clean`: clean the build output
-	- `dotnet restore`: make sure all dependencies are there and correctly configured
-	- `dotet build`: compiles the code to DLL
-	- `dotnet run`: do above 3 and run the DLL. 
-	- Just tell associates `dotnet run`, others are more for debugging when stuff doesn't go right.
+
 ### C# 
 - Language of choice for .NET
 - Latest is C# 12 (with .NET 8)
