@@ -11,15 +11,17 @@ class Program
         //Create list to store characters
         List<Character> characterList = new();
 
+        Data.LoadCharacters(characterList);
+
         //Add more hardcoded characters, append them to list
-        Character johnSmith = new("John Smith", "Fighter", 24, 15);
-        Character django = new("Django", "Rogue", 27, 12);
-        Character shrek = new("Shrek", "Ogre", 32, 44);
+        // Character johnSmith = new("John Smith", "Fighter", 24, 15);
+        // Character django = new("Django", "Rogue", 27, 12);
+        // Character shrek = new("Shrek", "Ogre", 32, 44);
 
         //Appending characters to the list 
-        characterList.Add(shrek);
-        characterList.Add(django);
-        characterList.Add(johnSmith);
+        // characterList.Add(shrek);
+        // characterList.Add(django);
+        // characterList.Add(johnSmith);
 
         //We user Console.Writeline to write output to the console
         //Console.WriteLine(johnSmith.ToString());
@@ -39,23 +41,28 @@ class Program
             {   
                 //Execute code based on whatever case we enter
                 case 1: //Add a character
-                Console.WriteLine("This is option 1");
+                //Created by Kung Lo
+                characterList.Add(Logic.GenerateUserCharacter());
                 break;
                 
                 case 2: //Display all characters
-                Console.WriteLine("This is option 2");
+                Logic.DisplayCharacters(characterList);
                 break;
 
                 //If user enters 9 we exit the switch and the program ends
                 case 9:
                 Console.WriteLine("Goodbye!");    
-                return;
+                break;
+
+                default:
+                Console.WriteLine("Invalid choice, please enter again!");
+                break;
             }
 
         }
 
-
-        //TODO: Validate User Input with try-catch
+        // Save the character list to file
+        Data.PersistCharacters(characterList);
 
 
     }

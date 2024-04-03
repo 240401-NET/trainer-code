@@ -1,3 +1,10 @@
+/* 
+Cursor parking
+*******************
+
+*******************
+*/
+
 namespace dndRPGdemo;
 
 class Menu 
@@ -16,6 +23,16 @@ class Menu
     //Takes user input and returns it to wherever this method is called
     public static int UserChoice()
     {
-        return Convert.ToInt32(Console.ReadLine());
+        
+        //One person please
+        // Samat Baltin
+        try{
+            return Convert.ToInt32(Console.ReadLine());
+        } catch(Exception e){
+            Console.WriteLine(e.Message + " Entry was invalid. Please try again!");
+            return -1;
+        }
+        
+        
     }
 }
