@@ -9,7 +9,7 @@ class Data
 
     //
     //Read the file
-    public static void LoadCharacters(List<Character> characters){
+    public static void LoadCharacters(ref List<Character> characters){
 
         try{
             string filePath = "characterList.json";

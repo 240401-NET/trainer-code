@@ -11,7 +11,7 @@ class Program
         //Create list to store characters
         List<Character> characterList = new();
 
-        Data.LoadCharacters(characterList);
+        Data.LoadCharacters(ref characterList);
 
         //Add more hardcoded characters, append them to list
         // Character johnSmith = new("John Smith", "Fighter", 24, 15);
