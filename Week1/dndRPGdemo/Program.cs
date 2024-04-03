@@ -10,8 +10,13 @@ class Program
 
         //Create list to store characters
         List<Character> characterList = new();
-
-        Data.LoadCharacters(characterList);
+        
+        try {
+            characterList = Data.LoadCharacters();
+        }
+        catch(Exception e) {
+            Console.WriteLine("File not generated, first time execution!");
+        }
 
         //Add more hardcoded characters, append them to list
         // Character johnSmith = new("John Smith", "Fighter", 24, 15);
