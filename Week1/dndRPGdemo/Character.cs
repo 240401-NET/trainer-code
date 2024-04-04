@@ -22,11 +22,13 @@ class Character
     }
 
     //Overriding a method, in this case toString()
-    //TODO: Change to use string interpolation
     public override string ToString()
     {
         return "Name: " + name + "\nClass: " + userClass + "\nAge: " + age + "\nHitpoints: " + hitpoints;
     }
+
+    //TODO: Create a battle HP comparitor function
+    
 
 
 
