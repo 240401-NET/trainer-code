@@ -3,10 +3,10 @@ namespace dndRPGdemo;
 public class Character 
 {   // Fields/properties
     //shorthand to avoid getters and setters
-    public string name {get; set;}
-    public string userClass {get;set;}
-    public int age {get; set;}
-    public int hitpoints {get;set;}
+    public string? name {get; set;}
+    public string? userClass {get;set;}
+    public int? age {get; set;}
+    public int? hitpoints {get;set;}
 
     //Constructors
     
