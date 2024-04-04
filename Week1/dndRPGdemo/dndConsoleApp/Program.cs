@@ -61,6 +61,7 @@ class Program
 
         }
 
+
         // Save the character list to file
         Data.PersistCharacters(characterList);
 
