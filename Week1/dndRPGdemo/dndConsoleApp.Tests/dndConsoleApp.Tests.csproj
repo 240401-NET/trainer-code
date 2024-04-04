@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\dndConsoleApp\dndRPGdemo.csproj" />
+  </ItemGroup>
+
 </Project>
