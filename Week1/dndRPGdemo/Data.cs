@@ -26,7 +26,6 @@ class Data
             // ?? is Null Coalescing Operator
             return JsonSerializer.Deserialize<List<Character>>(jsonCharacters) ?? new List<Character>();
             
-
             // foreach(Character character in characters){
             //     Console.WriteLine(character);
             // }
