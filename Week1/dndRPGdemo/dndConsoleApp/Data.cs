@@ -9,11 +9,7 @@ class Data
 
     //
     //Read the file
-<<<<<<< HEAD:Week1/dndRPGdemo/dndConsoleApp/Data.cs
     public static void LoadCharacters(ref List<Character> characters){
-=======
-    public static List<Character> LoadCharacters(){
->>>>>>> dndDemo-refactor:Week1/dndRPGdemo/Data.cs
 
         try{
             string filePath = "characterList.json";

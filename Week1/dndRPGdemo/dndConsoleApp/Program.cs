@@ -10,18 +10,8 @@ class Program
 
         //Create list to store characters
         List<Character> characterList = new();
-<<<<<<< HEAD:Week1/dndRPGdemo/dndConsoleApp/Program.cs
 
         Data.LoadCharacters(ref characterList);
-=======
-        
-        try {
-            characterList = Data.LoadCharacters();
-        }
-        catch(Exception e) {
-            Console.WriteLine("File not generated, first time execution!");
-        }
->>>>>>> dndDemo-refactor:Week1/dndRPGdemo/Program.cs
 
         //Add more hardcoded characters, append them to list
         // Character johnSmith = new("John Smith", "Fighter", 24, 15);
