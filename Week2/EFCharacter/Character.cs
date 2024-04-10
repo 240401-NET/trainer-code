@@ -7,7 +7,7 @@ public partial class Character
 {
     public int Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public required string Name { get; set; } = null!;
 
     public short Hitpoints { get; set; }
 
