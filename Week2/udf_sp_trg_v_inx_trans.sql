@@ -80,7 +80,7 @@
 -- AS
 --     PRINT 'inserting records'
 
-insert into hobbies (id, name, description) values ('uawhefliuah', 'napping', 'I LOVE napping')
+-- insert into hobbies (id, name, description) values ('uawhefliuah', 'napping', 'I LOVE napping')
 
 -- DROP TABLE hobbies
 
@@ -134,7 +134,24 @@ insert into hobbies (id, name, description) values ('uawhefliuah', 'napping', 'I
 -- DROP TRIGGER drop_prevention ON DATABASE
 
 -- Views
+-- CREATE VIEW CharactersWithClassesView
+-- AS
+-- select c.id as character_id, c.name as character_name, cl.name as class_name, cc.level as class_level 
+-- from normalized_dndrpg.Characters as c 
+-- join normalized_dndrpg.CharacterClasses as cc on c.id = cc.characterId 
+-- join normalized_dndrpg.Classes as cl on cl.id = cc.classId
 
--- Index
+Select * FROM CharactersWithClassesView Where character_name = 'Fatima'
 
--- Transactions (ACID)
+select * from CustomerPurchaseView
+
+-- Index 
+-- Clustered Index - 1 ci per table. EX: Primary Key's are clustered index. These affect the physical ordering of the data
+-- Non-clustered Index - many unclustered indices per table, they don't affect the physical ordering of the data
+-- increased querying performance
+-- good for SELECT but can make DML statements slower
+
+-- Exercises:
+-- Create a View/Table Valued Function that can get a customer's order, and what they purchased
+-- Create a Stored Procedure that will Create an order, and all tracks that are associated to the order
+-- Create a Stored Procedure that will Create a playlist from a list of songs
