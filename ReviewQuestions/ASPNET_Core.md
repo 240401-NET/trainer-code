@@ -1,0 +1,18 @@
+# ASP.NET Core
+- What is ASP.NET Core?
+- What is Controller in asp.net core?
+- How does controller based routing work?
+- how do you create end points in asp.net core?
+- What is appsettings.json? Why do we have appsettings.json and appsettings.Development.json?
+- How do you achieve dependency injection in asp.net core?
+- What are middlewares? Where do you configure them?
+- What are filters?
+- What is Model binding?
+- How do you utilize Data Annotations to enhance Model Binding?
+- How do you configure a route to...
+	- accept a route parameter
+	- accept query parameters
+	- accept json as request body
+- How do you set up memcache in ASP.NET Core?
+- What is CORS, and how do you configure it?
+- What is Authentication and Authorization, and how are they different?
