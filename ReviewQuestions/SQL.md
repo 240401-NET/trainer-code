@@ -1,4 +1,4 @@
-# SQL Questions (last mod: 4/1/24)
+# SQL Questions
 These questions are here to help you engage with the material. We will use these questions to review and to prepare for QC. 
 Define following terms and answer the questions in your own words, using any resources.
 
