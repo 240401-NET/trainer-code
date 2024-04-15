@@ -4,6 +4,7 @@
 - How does controller based routing work?
 - how do you create end points in asp.net core?
 - What is appsettings.json? Why do we have appsettings.json and appsettings.Development.json?
+- What is Open API?
 - How do you achieve dependency injection in asp.net core?
 - What are middlewares? Where do you configure them?
 - What are filters?

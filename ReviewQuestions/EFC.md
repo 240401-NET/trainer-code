@@ -8,5 +8,5 @@
 - What is DbSet?
 - What does OnModelCreating method do?
 - How do you add/update/delete/query data from DB using ef core?
-- How do you do "join" tables when querying your data in EF Core?
+- How do you "join" tables when querying your data in EF Core?
 - what does savechanges method do?
