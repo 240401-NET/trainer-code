@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<PetsDbContext>(option => option.UseSqlServer(builder.Configuration["dbconnectionstr"]));
 builder.Services.AddScoped<PetsRepository>();
+builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -53,6 +54,8 @@ app.MapPost("/pet", (PetsRepository repo, Pet petToCreate) => {
 })
 .WithName("Create New Pet")
 .WithOpenApi();
+
+app.MapControllers();
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
