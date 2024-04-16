@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pets.Data;
 using Pets.Models;
@@ -5,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<PetsDbContext>(option => option.UseSqlServer(builder.Configuration["dbconnectionstr"]));
-builder.Services.AddScoped<PetsRepository>();
+builder.Services.AddScoped<IRepository, PetsRepository>();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -43,13 +44,13 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/pet", (PetsRepository repo) => {
+app.MapGet("/pet", (IRepository repo) => {
     return repo.GetAllPets();
 })
 .WithName("Get All Pets")
 .WithOpenApi();
 
-app.MapPost("/pet", (PetsRepository repo, Pet petToCreate) => {
+app.MapPost("/pet", ([FromServices] IRepository repo, [FromBody] Pet petToCreate) => {
     return repo.CreateNewPet(petToCreate);
 })
 .WithName("Create New Pet")

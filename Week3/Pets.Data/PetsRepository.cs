@@ -2,7 +2,7 @@
 
 namespace Pets.Data;
 
-public class PetsRepository
+public class PetsRepository : IRepository
 {
     private readonly PetsDbContext _context;
     public PetsRepository(PetsDbContext context) {
