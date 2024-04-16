@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0c61e2ed-4a6a-437f-9a03-1f223527220b/resourceGroups/240401NET-RG/providers/Microsoft.Web/sites/petapp-demo",
+    "appService.deploySubpath": "PetApp\\Pets.API"
+}
