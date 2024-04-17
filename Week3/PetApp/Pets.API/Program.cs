@@ -7,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Your key for connection string in user-secrets need to be of the format "ConnectionStrings:YourDbName" 
 builder.Services.AddDbContext<PetsDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("PetDB")));
-builder.Services.AddScoped<IRepository, PetsRepository>();
-builder.Services.AddControllers();
+builder.Services.AddScoped<IPetRepository, PetsRepository>();
+builder.Services.AddScoped<IHobbyRepository, HobbiesRepository>();
+
+builder.Services.AddControllers()
+.AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

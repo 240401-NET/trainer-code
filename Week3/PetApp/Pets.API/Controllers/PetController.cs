@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Pets.Models;
 using Pets.Data;
+using Pets.Models;
+using Pets.Services;
 
 namespace Pets.Controllers;
 
@@ -10,10 +11,13 @@ namespace Pets.Controllers;
 public class PetController : ControllerBase
 {
 
-    private readonly PetsRepository petRepo;
+    private readonly IPetService _petService;
+    private readonly IPetRepository _petRepo;
 
-    public PetController(PetsRepository repo){
-        this.petRepo = repo;
+
+    public PetController(IPetService petService, IPetRepository petRepo){
+        this._petService = petService;
+        _petRepo = petRepo;
     }
     /// <summary>
     /// Get All Pets
@@ -29,7 +33,7 @@ public class PetController : ControllerBase
         // If the Pet Repository returns a null value, it will throw a NullReferenceException.
         // However, this is a good place to add logic to handle null values.
         // For now, we will simply return the result of the repository's GetAllPets method.
-        return petRepo.GetAllPets();
+        return _petService.GetAllPets();
     }
 
     /// <summary>
@@ -43,15 +47,15 @@ public class PetController : ControllerBase
     public Pet CreateNewPet([FromBody] Pet pet)
     {
         // Call the repository to create the new pet
-        return petRepo.CreateNewPet(pet);
+        return _petService.CreateNewPet(pet);
     }
     
     // Get a Pet By Id - Room 5 (Fatima, Vlada)
     [HttpGet("{id}")]
-    public Pet GetPetById(int id)
+    public ActionResult<Pet> GetPetById(int id)
     {
-          var pet = petRepo.GetPetById(id);
-          return pet;
+          Pet? pet = _petService.GetPetById(id);
+          return pet is not null ? pet : NoContent();
     }
     // THIS IS ROOM 2! LEAVE THIS BLOCK ALONE!
     //////////////////////////////////////////////////////////////////////////////
@@ -59,19 +63,24 @@ public class PetController : ControllerBase
     [HttpGet("search/{name}")]
     public ActionResult<IEnumerable<Pet>> SearchPetsByName(string name)
     {
-        var pets = petRepo.GetAllPets().Where(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToList();
-        if(!pets.Any())
-        {
-            return NoContent();
+        try {
+            IEnumerable<Pet> pets = _petService.GetPetsByName(name);
+            if(!pets.Any())
+            {
+                return NoContent();
+            }
+            return Ok(pets); // Please do not edit.
         }
-        return pets; // Please do not edit.
+        catch(FormatException e) {
+            return BadRequest(e.Message);
+        }
     }
     //////////////////////////////////////////////////////////////////////////////
     // Edit Pets - Room 7 (Nakiyyah, Kung)
     [HttpPatch("/pets/{id}")]
-    public ActionResult<Pet> EditPetById(int id, [FromBody] Pet newPet)
+    public async Task<ActionResult<Pet>> EditPetById(int id, [FromBody] Pet newPet)
     {
-        Pet? updatedPet = petRepo.EditPetById(id, newPet);
+        Pet? updatedPet = await _petRepo.EditPetById(id, newPet);
         
         if(updatedPet is null)
         {
@@ -86,15 +95,20 @@ public class PetController : ControllerBase
     [HttpDelete("/pets/{id}")]
     public ActionResult<Pet?> DeletePet(int id)
     {
-        Pet deletedPet = petRepo.DeletePet(id)!;
-        return deletedPet;
+        try {
+            Pet deletedPet = _petRepo.DeletePet(id)!;
+            return deletedPet;
+        }
+        catch(Exception) {
+            return Problem();
+        }
     }
 
     // Get pets with a certain hobbies - If anyone wants this, claim it here - Reluctantly Ricardo will try
     [HttpGet("hobby/{hobbyName}")]
     public ActionResult<IEnumerable<Pet>> GetPetsByHobby(string hobbyName)
     {
-        var pets = petRepo.GetAllPets().Where(p => p.Hobbies.Any(h => h.Name.Equals(hobbyName, StringComparison.OrdinalIgnoreCase))).ToList();
+        var pets = _petRepo.GetAllPets().Where(p => p.Hobbies.Any(h => h.Name.Equals(hobbyName, StringComparison.OrdinalIgnoreCase))).ToList();
         if (!pets.Any())
         {
             // Credit to Dean for figuring out the NoContent method. <3

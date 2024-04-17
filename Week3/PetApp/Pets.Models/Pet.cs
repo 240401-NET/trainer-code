@@ -5,5 +5,5 @@ public class Pet {
     public string Name { get; set; }
     public string Color { get; set; }
     public DateOnly DoB { get; set; }
-    public IEnumerable<Hobby> Hobbies { get; set; }
+    public IEnumerable<Hobby>? Hobbies { get; set; }
 }

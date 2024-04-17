@@ -3,7 +3,7 @@ using Pets.Models;
 
 namespace Pets.Data;
 
-public class PetsRepository : IRepository
+public class PetsRepository : IPetRepository
 {
     private readonly PetsDbContext _context;
     public PetsRepository(PetsDbContext context) {
@@ -11,7 +11,6 @@ public class PetsRepository : IRepository
     }
 
     // Create
-
     public Pet CreateNewPet(Pet pet) {
         _context.Pets.Add(pet);
         _context.SaveChanges();
@@ -20,9 +19,8 @@ public class PetsRepository : IRepository
     }
 
     // Retrieve
-
     public IEnumerable<Pet> GetAllPets() {
-        return _context.Pets.Include(p => p.Hobbies).ToList();
+        return _context.Pets.Include(p=> p.Hobbies).ToList();
     }
 
     // Update
@@ -39,6 +37,7 @@ public class PetsRepository : IRepository
             {
                 _context.Pets.Remove(petToDelete);
                 _context.SaveChanges();
+                // _context.ChangeTracker.Clear();
                 return petToDelete;
             }
 
@@ -46,6 +45,7 @@ public class PetsRepository : IRepository
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+            throw;
         }
 
         return petToDelete;
@@ -57,7 +57,7 @@ public class PetsRepository : IRepository
         return _context.Pets.Find(id);
     }
 
-    public Pet? EditPetById(int id, Pet newPet)
+    public async Task<Pet?> EditPetById(int id, Pet newPet)
     {
         Pet oldPet = GetPetById(id);
         
@@ -67,10 +67,14 @@ public class PetsRepository : IRepository
             oldPet.Color = newPet.Color ?? oldPet.Color;
             oldPet.DoB = oldPet.DoB.Equals(newPet.DoB) ? oldPet.DoB : newPet.DoB;
             oldPet.Hobbies = newPet.Hobbies ?? oldPet.Hobbies;
-            _context.SaveChangesAsync();
-            return GetPetById(id);
+            await _context.SaveChangesAsync();
+            return oldPet;
         }
 
         return null;       
+    }
+
+    public IEnumerable<Pet> GetPetsByName(string name) {
+        return _context.Pets.Where(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToList();
     }
  }

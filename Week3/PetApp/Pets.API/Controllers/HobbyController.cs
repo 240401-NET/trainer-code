@@ -5,10 +5,10 @@ namespace Pets.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HobbyController(PetsRepository petRepository, HobbiesRepository hobbyRepo) : ControllerBase
+public class HobbyController(IPetRepository petRepository, IHobbyRepository hobbyRepo) : ControllerBase
 {
-    private readonly PetsRepository _petRepo = petRepository;
-    private readonly HobbiesRepository _hobbyRepo = hobbyRepo;
+    private readonly IPetRepository _petRepo = petRepository;
+    private readonly IHobbyRepository _hobbyRepo = hobbyRepo;
 
     // Create hobbies of a pet - Room 3 (Kiryl, Adam, Tsering)
     [HttpPost]
