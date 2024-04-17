@@ -45,17 +45,19 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+/*
 app.MapGet("/pet", (IRepository repo) => {
     return repo.GetAllPets();
 })
 .WithName("Get All Pets")
 .WithOpenApi();
+*/
 
-app.MapPost("/pet", ([FromServices] IRepository repo, [FromBody] Pet petToCreate) => {
-    return repo.CreateNewPet(petToCreate);
-})
-.WithName("Create New Pet")
-.WithOpenApi();
+// app.MapPost("/pet", ([FromServices] IRepository repo, [FromBody] Pet petToCreate) => {
+//     return repo.CreateNewPet(petToCreate);
+// })
+// .WithName("Create New Pet")
+// .WithOpenApi();
 
 app.MapControllers();
 app.Run();
