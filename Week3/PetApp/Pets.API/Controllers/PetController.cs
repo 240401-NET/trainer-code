@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Pets.Data;
 using Pets.Models;
 using Pets.Services;
@@ -13,11 +14,13 @@ public class PetController : ControllerBase
 
     private readonly IPetService _petService;
     private readonly IPetRepository _petRepo;
+    private IMemoryCache _memorycache;
 
 
-    public PetController(IPetService petService, IPetRepository petRepo){
+    public PetController(IPetService petService, IPetRepository petRepo, IMemoryCache memoryCache){
         this._petService = petService;
         _petRepo = petRepo;
+        _memorycache = memoryCache;
     }
     /// <summary>
     /// Get All Pets
@@ -33,7 +36,19 @@ public class PetController : ControllerBase
         // If the Pet Repository returns a null value, it will throw a NullReferenceException.
         // However, this is a good place to add logic to handle null values.
         // For now, we will simply return the result of the repository's GetAllPets method.
-        return _petService.GetAllPets();
+        // Declare allPets variable to hold data
+        IEnumerable<Pet> allPets;
+        // First, try to get the data from memoryCache
+        // If it is successful, return the data from the cache
+        if(_memorycache.TryGetValue("allPets", out allPets)) {
+            return allPets;
+        }
+        else {
+            // If we weren't able to retrieve data from memory cache, then go get it from the database
+            allPets = _petService.GetAllPets();
+            _memorycache.Set("allPets", allPets, new TimeSpan(0, 2, 0));
+            return allPets;
+        }
     }
 
     /// <summary>

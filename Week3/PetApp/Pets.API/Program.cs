@@ -2,12 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pets.Data;
 using Pets.Models;
+using Pets.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Your key for connection string in user-secrets need to be of the format "ConnectionStrings:YourDbName" 
 builder.Services.AddDbContext<PetsDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("PetDB")));
+// Three different life time of dependencies: Transient, Scoped, and Singleton
 builder.Services.AddScoped<IPetRepository, PetsRepository>();
+builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IHobbyRepository, HobbiesRepository>();
 
 builder.Services.AddControllers()
@@ -20,6 +23,15 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Get yourself some memcache
+builder.Services.AddMemoryCache();
+builder.Services.AddCors((options) => {
+    options.AddPolicy("mycorspolicy", builder => {
+        builder.WithOrigins("*")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,9 +40,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// This is your middleware! Handles Http -> Https redirection
 app.UseHttpsRedirection();
-
+app.UseCors("mycorspolicy");
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
