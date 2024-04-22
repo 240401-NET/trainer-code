@@ -1,0 +1,12 @@
+h1 {
+    /* Tag selector */
+    border: 1pt solid black;
+}
+
+.heading-2 {
+    /* this will select all elements with heading-2 class */
+}
+
+#one {
+    /* this will select the element with id one */
+}
