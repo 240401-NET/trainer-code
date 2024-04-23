@@ -32,15 +32,21 @@
     <h2 class="heading-2">
         Heading Two
     </h2>
-    <ul>
+    <ul onclick="clickHandler(event, 'ul')">
         <li class="list-item"></li>
         <li class="list-item"></li>
         <li class="list-item"></li>
         <li class="list-item"></li>
-        <li class="list-item"></li>
+        <li onclick="clickHandler(event, 'li')"class="list-item"></li>
     </ul>
+    <button onclick="getNewDivs()">Click Me To Get New Divs</button>
+    <div onmouseover="handleMouseOver()" class="thick-border">
+        Hover Over Me!
+    </div>
+
     <footer> <!--A semantic element for the bottom of the webpage-->
-        <div></div> <!--non-semantic element-->
+        <div id="div-container"></div> <!--non-semantic element-->
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>

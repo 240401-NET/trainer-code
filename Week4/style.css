@@ -10,3 +10,7 @@ h1 {
 #one {
     /* this will select the element with id one */
 }
+
+.thick-border {
+    border: 4pt solid black;
+}
