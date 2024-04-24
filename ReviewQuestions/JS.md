@@ -2,7 +2,7 @@
 
 ## Questions
 ### Javascript genral
-- What are some primitives javascript support?
+- What are some primitive types javascript support?
 - What are 3 different variable scopes in JS?
 - What's the difference between let and const?
 
