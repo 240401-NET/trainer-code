@@ -13,7 +13,7 @@ is a building block of a webpage
 `<img/>`
 
 ### Attributes
-Attributes are optional data (sometimes not optional) that provides additional data to the element
+Attributes provide additional data to the element
 `<img href="path/to/my/img.jpg" alt="cat lying belly up sunning herself"/>`
 #### Global attributes
 - id, class, style, etc. 
