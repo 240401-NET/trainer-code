@@ -46,7 +46,7 @@ public class PetController : ControllerBase
         else {
             // If we weren't able to retrieve data from memory cache, then go get it from the database
             allPets = _petService.GetAllPets();
-            _memorycache.Set("allPets", allPets, new TimeSpan(0, 2, 0));
+            _memorycache.Set("allPets", allPets, new TimeSpan(0, 0, 10));
             return allPets;
         }
     }
