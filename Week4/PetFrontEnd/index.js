@@ -10,7 +10,7 @@ function getAllPets() {
 function displayPets(pets) {
     // {id: 1, name: 'Auryn', doB: '0000-00-00',}
     const petTable = document.querySelector('#pets-table')
-    const tBody = petTable.tBodies[0]
+    const tBody = petTable.tBodies[0] 
     tBody.innerHTML = ''
     // 3 different types of for loops in js
     // regular for loop 
@@ -89,8 +89,5 @@ async function handleSubmit(e) {
     await addPets(reqBody)
     getAllPets()
 }
-async function setUp() {
-    await addPets(pet)
-    getAllPets()
-}
+
 getAllPets()
