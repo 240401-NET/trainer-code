@@ -16,7 +16,7 @@ numOrBoolOrStrOrArr = "hello, world!"
 numOrBoolOrStrOrArr = anotherStrArr
 
 // any and unknown
-// Use any with extreme caution, not recommended
+// Use any with caution, not recommended unless you just Can't get it working with typescript
 let iCanBeAnythingIWant : any = 1
 iCanBeAnythingIWant = true
 iCanBeAnythingIWant = {}
@@ -41,7 +41,7 @@ let anotherNumVar : number = <number> numOrBigInt
 interface Pet {
     name : string,
     id? : number,
-    // id : number | null,
+    // id : number | undefined,
     color: string,
     doB : Date | string,
     hobbies : Hobby[]

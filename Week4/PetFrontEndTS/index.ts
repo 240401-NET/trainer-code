@@ -57,7 +57,7 @@ const pet : Pet = {
     doB: '1972-04-25'
 }
 
-async function handleSubmit(e: Event) {
+async function handleSubmit(e: Event) : Promise<void>{
     // Prevent page refreshing, which is the default behavior of form submit event
     e.preventDefault()
 
