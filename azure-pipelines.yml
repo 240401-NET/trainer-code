@@ -34,8 +34,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- script: dotnet build '$(solution)'
-  displayName: 'pls work?'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
