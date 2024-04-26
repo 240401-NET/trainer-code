@@ -45,6 +45,6 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'PublishProfile'
-    PublishProfilePath: '$(System.DefaultWorkingDirectory)/**/*.PublishSettings'
+    PublishProfilePath: 'Week3/PetApp/*.PublishSettings'
     PublishProfilePassword: 'loY7hpzt19sgMoWPfGwMHX8WQmzZDiWL9Xlk1lruyBdGSaznhSjsxqh8ThLn'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
