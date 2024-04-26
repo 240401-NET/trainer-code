@@ -38,7 +38,7 @@ steps:
   inputs:
     command: 'custom'
     custom: publish
-    arguments: '$(solution) -c $(buildConfiguration) -o dist'
+    arguments: 'Week4/PetApp/Pets.API -c $(buildConfiguration) -o dist'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
