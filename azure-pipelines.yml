@@ -36,7 +36,7 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: 'publish'
     projects: '$(solution)'
     arguments: '-c $(buildConfiguration)'
 
