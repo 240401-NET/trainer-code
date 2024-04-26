@@ -36,9 +36,9 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    projects: '$(solution)'
-    arguments: '-c $(buildConfiguration)'
+    command: 'custom'
+    custom: publish '$(solution)'
+    arguments: '-c $(buildConfiguration) -o dist'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
