@@ -35,11 +35,12 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: Publish
   inputs:
-    command: 'custom'
-    projects: 'Week4/PetApp/Pets.API'
-    custom: 'publish'
-    arguments: '-c $(buildConfiguration) -o dist'
+    command: 'publish'
+    publishWebProjects: false
+    zipAfterPublish: true
+    projects: 'Week3/PetApp/Pets.API/*.csproj'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
