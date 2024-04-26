@@ -34,11 +34,14 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- script: dotnet build '$(solution)'
+  displayName: 'pls work?'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
-    custom: publish
-    arguments: 'Week4/PetApp/Pets.API -c $(buildConfiguration) -o dist'
+    projects: 'Week4/PetApp/Pets.API'
+    custom: 'publish'
+    arguments: '-c $(buildConfiguration) -o dist'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
