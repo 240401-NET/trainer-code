@@ -44,7 +44,8 @@ steps:
 
 - task: AzureRmWebAppDeployment@4
   inputs:
-    ConnectionType: 'PublishProfile'
-    PublishProfilePath: 'Week3/PetApp/*.PublishSettings'
-    PublishProfilePassword: 'loY7hpzt19sgMoWPfGwMHX8WQmzZDiWL9Xlk1lruyBdGSaznhSjsxqh8ThLn'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(7db5a42a-1fa9-40a3-8da3-4ed5fb8c49cb)'
+    appType: 'webApp'
+    WebAppName: 'petapp-pipeline-demo'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
