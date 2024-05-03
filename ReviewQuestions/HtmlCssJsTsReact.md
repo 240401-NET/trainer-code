@@ -8,7 +8,6 @@
 - How are forms created in HTML?
 - What features were introduced in HTML5?
 
-
 ## CSS
 - What are the 3 ways to introduce CSS styling to a site? Which is generally preferable?
 - In what order do these 3 ways get prioritized?
@@ -19,7 +18,6 @@
 - How do CSS rules get selected when there are multiple conflicting rules?
 - Can you describe the CSS box model?
 - What does responsive web design mean?
-
 
 ## Javascript
 - What is JS?
@@ -49,7 +47,6 @@
 - What is a promise?
 - What are closures?
 
-
 ## Typescript
 - What is TS?
 - Is TS strongly or weakly typed?
@@ -73,7 +70,6 @@
 - What is special about the App.tsx file?
 - What is the virtual DOM?
 
-
 ## React SPA
 - What is an SPA? What are the advantages and disadvantages?
 - What is routing?
@@ -85,7 +81,6 @@
 - What is context? Why is it used?
 - How is data sent from a parent component to a child component?
 - How is data sent from a child component to a parent component (name of the technique & how it’s done)
-
 
 ## React rendering
 - What is JSX?
@@ -99,7 +94,6 @@
 - How is data binding done in React (one way binding)?
 - How is event binding done in React?
 - How can you retrieve input box data in React?
-
 
 ## React hooks
 - What are hooks?
