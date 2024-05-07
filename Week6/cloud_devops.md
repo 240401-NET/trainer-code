@@ -2,7 +2,7 @@
 
 ## Different Levels of Services / Shared Responsibility Models
 - Infrastructure as a Service - Virtual Machine Azure, EC2 AWS
-- Platform as a Service - SQL Server
+- Platform as a Service - Azure Web App, Azure SQL Server
 - Software as a Service - Gmail, Google Drive
 
 ## SLA (service level agreement)
@@ -21,7 +21,7 @@ https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-de
 https://learn.microsoft.com/en-us/certifications/exams/az-900/
 
 
-# DevOps
+# [DevOps](https://www.atlassian.com/devops)
 - Philosophy 
 - CI/CD pipeline
 - CI:Continuous Integration
@@ -34,10 +34,10 @@ https://learn.microsoft.com/en-us/certifications/exams/az-900/
 - Continuous Delivery/Deployment
   - take the built artifact and deploy it to an environtment (testing/QA, dev teams env, etc)
 
-|---Build---|---Test---|---Release/Artifact---|---Deploy---|
-|Continuous Integration|
-|------------Continuous Delivery--------------|
-|--------------------Continuous Deployment-----------------|
+- |---Build----|---Test----|---Release/Artifact---|---Deploy---|
+- |Continuous Integration|
+- |------------Continuous Delivery--------------|
+- |--------------------Continuous Deployment-----------------|
 
 
 ## Building Pipelines

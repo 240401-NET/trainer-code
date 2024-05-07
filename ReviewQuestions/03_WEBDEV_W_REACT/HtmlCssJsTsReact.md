@@ -90,7 +90,8 @@
 - How do I display an array of items as individual components in React?
 - What are lists & keys in react?
 - When does a component re-render?
-- Data & Event binding
+
+## Data & Event binding
 - How is data binding done in React (one way binding)?
 - How is event binding done in React?
 - How can you retrieve input box data in React?
