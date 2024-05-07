@@ -42,10 +42,17 @@ steps:
     zipAfterPublish: true
     projects: 'Week3/PetApp/Pets.API/*.csproj'
 
-- task: AzureRmWebAppDeployment@4
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(7db5a42a-1fa9-40a3-8da3-4ed5fb8c49cb)'
+#     appType: 'webApp'
+#     WebAppName: 'petapp-pipeline-demo'
+#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(7db5a42a-1fa9-40a3-8da3-4ed5fb8c49cb)'
     appType: 'webApp'
-    WebAppName: 'petapp-pipeline-demo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    appName: 'petapp-pipeline-demo'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
