@@ -18,10 +18,12 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
+# dotnet restore
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
 
+# dotnet build
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -29,11 +31,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+# AKA dotnet test
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    codeCoverageEnabled: true
 
+- task: PublishCodeCoverageResults@1
+  displayName: Publish Code Coverage Report
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+    reportDirectory: 'Week3/PetApp/Pets.Tests'
+
+# AKA dotnet publish + zip
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
@@ -42,10 +54,19 @@ steps:
     zipAfterPublish: true
     projects: 'Week3/PetApp/Pets.API/*.csproj'
 
-- task: AzureRmWebAppDeployment@4
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(7db5a42a-1fa9-40a3-8da3-4ed5fb8c49cb)'
+#     appType: 'webApp'
+#     WebAppName: 'petapp-pipeline-demo'
+#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+# Take the zip file we produced in previous step, and deploy that (or move that file) to Azure Web App we define
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(7db5a42a-1fa9-40a3-8da3-4ed5fb8c49cb)'
     appType: 'webApp'
-    WebAppName: 'petapp-pipeline-demo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    appName: 'petapp-pipeline-demo'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
