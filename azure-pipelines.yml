@@ -36,6 +36,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    codeCoverageEnabled: true
+
+- task: PublishCodeCoverageResults@1
+  displayName: Publish Code Coverage Report
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+    reportDirectory: 'Week3/PetApp/Pets.Tests'
 
 # AKA dotnet publish + zip
 - task: DotNetCoreCLI@2
