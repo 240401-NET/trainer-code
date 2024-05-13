@@ -72,7 +72,8 @@ Is a way to provide *uniform environment* to run our app regardless of whichever
     - `docker build`
     - `docker build -t dockerhubusername/imagename:tag-name relative-path-to-folder-containing-dockerfile`
     - ex: `docker build -t sminseonong/pokestorage:latest .`
-
+- To run image with env variables:
+  - `docker run -it -p 8000:80 -e "ConnectionStrings:YourDB"="Your_Connection_String" sminseonong/petappapi:0.0.2`
 ## Docker Compose
 Is a way to coordinate multiple containers together
 
