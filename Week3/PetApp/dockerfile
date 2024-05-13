@@ -1,0 +1,31 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
+# Start building my image on top of Microsoft's .NET SDK 8
+
+# In Dockerfile, we provide instructions on how to build a self-contained file system for my aplication and how to run my application
+# If I want to run this app in Any machine what so ever,
+# I need a runtime. ASP.NET Core 8 Runtime
+# I also need published artifacts
+
+# 1. Get my source code
+# 2. Build my deployable artifacts
+# 3. Get my run time
+# 4. Tell docker engine how to run my application
+
+# Set my work directory so all my RUN/COPY/CMD/ENTRYPOINT etc executes from this folder
+WORKDIR /app 
+
+COPY Pets.API /app/Pets.API
+COPY Pets.Data /app/Pets.Data
+COPY Pets.Models /app/Pets.Models
+
+RUN dotnet publish Pets.API -c Release -o dist 
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 as run
+
+WORKDIR /app
+
+# Copy my artifacts from Build stage to my current work directory
+COPY --from=build /app/dist .
+
+# When I say "docker run", execute "dotnet pets.api.dll"
+CMD [ "dotnet", "Pets.API.dll" ]
