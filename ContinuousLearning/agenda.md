@@ -10,13 +10,12 @@
   - Prompts
   - Other GenAI Models (Dall-E, multimodal like GPT-4)
 - LLM Issues
-  - Nondeterministic Output
+  - Stochastic Output (Temperature)
   - Logging and monitoring
-  - Hallucination (and legal ramifications)
-- LLM Ethics
+  - Hallucination (and [legal ramifications](https://www.forbes.com/sites/marisagarcia/2024/02/19/what-air-canada-lost-in-remarkable-lying-ai-chatbot-case/))
+- LLM Ethics and Security
   - Sourcing Data
   - Handling user data
-- LLM Security
   - Prompt Injection
   - Jailbreak
 - HuggingFace
@@ -25,7 +24,7 @@
 - [Prompting for Devs](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
 
 ## Day 3 - 5/30(Thursday)
-- AI Assisted Development with Codieum
+- AI Assisted Development with Codeium
 - Usecases
   - Documentation
   - Unit Testing
