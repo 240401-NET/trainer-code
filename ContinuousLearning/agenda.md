@@ -6,6 +6,9 @@
 - What is AI/ML?
 - Generative AI Intro
   - What the heck is LLM?
+  - Word Embedding is a vector representation of text (dimension depends on each model) -> This allows models to compare words based on meanings instead of exclusively depending on spelling
+  - Vector conversion algo (Word2Vec, GloVe, etc)
+  - Retrieval Augmented Generation (RAG architecture): LLM + VectorDB(that has additional data)
   - Tokens
   - Prompts
   - Other GenAI Models (Dall-E, multimodal like GPT-4)
@@ -14,7 +17,7 @@
   - Logging and monitoring
   - Hallucination (and [legal ramifications](https://www.forbes.com/sites/marisagarcia/2024/02/19/what-air-canada-lost-in-remarkable-lying-ai-chatbot-case/))
 - LLM Ethics and Security
-  - Sourcing Data
+  - Sourcing Data (Github copilot law suit)
   - Handling user data
   - Prompt Injection
   - Jailbreak
